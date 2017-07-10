@@ -8,6 +8,11 @@ def gender_category(data):
     data.Gender = data.Gender.apply(lambda x: 1 if x.lower() in male else 2 if x.lower() in female else 3)
     return data
 
+
+def drop_columns(data):
+    data.drop_columns(['comments', 'Timestamp', 'state', 'self_employed'])
+
+
 def tech(data):
     data.tech_company = data.tech_company.apply(lambda x: 1 if x == 'Yes' else 0)
     print(type(data))
