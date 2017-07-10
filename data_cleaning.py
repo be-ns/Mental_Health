@@ -10,7 +10,7 @@ def _gender_category(data):
 
 
 def _drop_(data):
-    data.drop_columns(['comments', 'Timestamp', 'state', 'self_employed'])
+    data.drop(['comments', 'Timestamp', 'state', 'self_employed'])
 
 
 def _tech(data):
