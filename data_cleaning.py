@@ -10,7 +10,7 @@ def _gender_category(data):
 
 
 def _drop_(data):
-    data.drop(labels = ['comments', 'Timestamp', 'state', 'self_employed'])
+    data.drop(labels=['comments', 'Timestamp', 'state', 'self_employed'], axis = 1, inplace = True)
     return data
 
 
