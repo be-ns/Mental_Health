@@ -11,3 +11,4 @@ def gender_category(data):
 if __name__ == '__main__':
     data = pd.read_csv('survey.csv')
     data = gender_category(data)
+    print(data.Gender.head(12))
