@@ -10,6 +10,7 @@ def gender_category(data):
 
 def tech(data):
     data.tech_company = data.tech_company.apply(lambda x: 1 if x == 'Yes' else 0)
+    print(type(data))
     return data
 
 
