@@ -9,7 +9,7 @@ def _gender_category(data):
     return data
 
 
-def _drop_columns(data):
+def _drop_(data):
     data.drop_columns(['comments', 'Timestamp', 'state', 'self_employed'])
 
 
