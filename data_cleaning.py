@@ -14,7 +14,8 @@ def tech(data):
 
 
 def clean_data(data):
-    data = tech(gender_category(data))
+    data = gender_category(data)
+    data = tech(data)
 
 if __name__ == '__main__':
     data = pd.read_csv('survey.csv')
