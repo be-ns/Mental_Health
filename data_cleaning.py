@@ -56,7 +56,7 @@ def _family_hist(data):
 
 
 def _work_interference(data):
-    data.family_history = data.family_history.apply(lambda x: 4 if x == 'Often' else 3 if x == 'Sometimes' else 2 if x == 'Rarely' else 1 if x == 'Never' else 0)
+    data.work_interfere = data.work_interfere.apply(lambda x: 4 if x == 'Often' else 3 if x == 'Sometimes' else 2 if x == 'Rarely' else 1 if x == 'Never' else 0)
     return data
 
 
