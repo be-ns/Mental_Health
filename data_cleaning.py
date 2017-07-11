@@ -50,6 +50,26 @@ def _remote_work(data):
     return data
 
 
+def _family_hist(data):
+    data.family_history = data.family_history.apply(lambda x: 1 if x == 'Yes' else 0)
+    return data
+
+
+def _work_interference(data):
+    data.family_history = data.family_history.apply(lambda x: 4 if x == 'Often' else 3 if x == 'Sometimes' else 2 if x == 'Rarely' else 1 if x == 'Never' else 0)
+    return data
+
+
+
+def _employ(data):
+    data.family_history = data.family_history.apply(lambda x: 25 if x == '6-25' else 5 if x == '1-5' else 100 if x == '26-100' else 500 if x == '100-500' else 1000 if x == '500-1000' else 2000)
+    return data
+
+
+def _leave(data):
+    data.family_history = data.family_history.apply(lambda x: 1 if x == 'Very easy' else 2 if x == 'Somewhat easy' else 3 if x == "Don't know" else 4 if x == 'Somewhat difficult' else 5 if x == 'Very difficult')
+    return data
+
 def clean_data(data):
     data = _gender_category(data)
     data = _tech(data)
@@ -57,6 +77,10 @@ def clean_data(data):
     data = _check_for_socialized_healthcare(data)
     data = _treatment(data)
     data = _remote_work(data)
+    data = _family_hist(data)
+    data = _work_interference(data)
+    data = _employ(data)
+    data = _leave(data)
     return data
 
 
