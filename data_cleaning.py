@@ -67,7 +67,7 @@ def _employ(data):
 
 
 def _leave(data):
-    data.family_history = data.family_history.apply(lambda x: 1 if x == 'Very easy' else 2 if x == 'Somewhat easy' else 3 if x == "Don't know" else 4 if x == 'Somewhat difficult' else 5 if x == 'Very difficult')
+    data.family_history = data.family_history.apply(lambda x: 1 if x == 'Very easy' else 2 if x == 'Somewhat easy' else 4 if x == 'Somewhat difficult' else 5 if x == 'Very difficult' else 3)
     return data
 
 def clean_data(data):
