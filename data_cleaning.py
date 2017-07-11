@@ -36,7 +36,7 @@ def _check_for_socialized_healthcare(data):
     'Thailand': 80.57, 'Denmark': 76.17, 'Bahamas, The': 0.0, \
     'Greece': 54.64, 'Moldova': 0.0, 'Georgia': 0.0, \
     'China': 61.56,'Czech Republic': 75.48, 'Philippines': 68.46}
-    data.Country = data.Country.apply(lambda x: socialized[x] if x in socialized.values() else 0.0)
+    data.Country = data.Country.apply(lambda x: socialized[x] if x in socialized.keys() else 0.0)
     return data
 
 
