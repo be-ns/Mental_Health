@@ -62,7 +62,7 @@ def _work_interference(data):
 
 
 def _employ(data):
-    data.family_history = data.family_history.apply(lambda x: 25 if x == '6-25' else 5 if x == '1-5' else 100 if x == '26-100' else 500 if x == '100-500' else 1000 if x == '500-1000' else 2000)
+    data.no_employees = data.no_employees.apply(lambda x: 25 if x == '6-25' else 5 if x == '1-5' else 100 if x == '26-100' else 500 if x == '100-500' else 1000 if x == '500-1000' else 2000)
     return data
 
 
