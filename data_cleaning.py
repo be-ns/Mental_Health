@@ -4,7 +4,7 @@ import numpy as np
 
 def _gender_category(data):
     male = ['male', 'm', 'mal','make', 'man', 'guy', 'mail', 'male-ish', 'maile', 'male (cis)', 'cis male']
-    female = ['female', 'femake', 'femail', 'cis-female/femme', 'female ', 'woman', 'girl']
+    female = ['female', 'femake', 'femail', 'cis-female\femme', 'female ', 'woman', 'girl']
     data.Gender = data.Gender.apply(lambda x: 1 if x.lower() in male else 2 if x.lower() in female else 3)
     return data
 
@@ -20,21 +20,21 @@ def _tech(data):
 
 
 def _check_for_socialized_healthcare(data):
-    socialized = {'United States': 68.35, 'Canada':69.77, 'United Kingdom': 74.26, /
-    'Bulgaria': 52.72, 'France': 78.40, 'Portugal': 69.73, /
-    'Netherlands': 82.22, 'Switzerland': 71.74, 'Poland': 62.33, /
-    'Australia': 75.42, 'Germany': 75.99, 'Russia': 56.13, /
-    'Mexico': 69.82, 'Brazil': 52.44, 'Slovenia': 65.15, /
-    'Costa Rica': 0.0, 'Austria': 79.47, 'Ireland': 53.12, /
-    'India': 67.50, 'South Africa': 62.55, 'Italy': 66.69, /
-    'Sweden': 70.56, 'Colombia': 66.79, 'Latvia': 0.0, /
-    'Romania': 53.84, 'Belgium': 79.85, 'New Zealand': 71.65, /
-    'Zimbabwe': 0.0, 'Spain': 76.34, 'Finland': 74.61, /
-    'Uruguay': 0.0, 'Israel': 74.98, 'Bosnia and Herzegovina': 60.57, /
-    'Hungary': 52.29, 'Singapore': 68.50, 'Japan': 81.33, /
-    'Nigeria': 0.0, 'Croatia': 65.05, 'Norway': 74.96, /
-    'Thailand': 80.57, 'Denmark': 76.17, 'Bahamas, The': 0.0, /
-    'Greece': 54.64, 'Moldova': 0.0, 'Georgia': 0.0, /
+    socialized = {'United States': 68.35, 'Canada':69.77, 'United Kingdom': 74.26, \
+    'Bulgaria': 52.72, 'France': 78.40, 'Portugal': 69.73, \
+    'Netherlands': 82.22, 'Switzerland': 71.74, 'Poland': 62.33, \
+    'Australia': 75.42, 'Germany': 75.99, 'Russia': 56.13, \
+    'Mexico': 69.82, 'Brazil': 52.44, 'Slovenia': 65.15, \
+    'Costa Rica': 0.0, 'Austria': 79.47, 'Ireland': 53.12, \
+    'India': 67.50, 'South Africa': 62.55, 'Italy': 66.69, \
+    'Sweden': 70.56, 'Colombia': 66.79, 'Latvia': 0.0, \
+    'Romania': 53.84, 'Belgium': 79.85, 'New Zealand': 71.65, \
+    'Zimbabwe': 0.0, 'Spain': 76.34, 'Finland': 74.61, \
+    'Uruguay': 0.0, 'Israel': 74.98, 'Bosnia and Herzegovina': 60.57, \
+    'Hungary': 52.29, 'Singapore': 68.50, 'Japan': 81.33, \
+    'Nigeria': 0.0, 'Croatia': 65.05, 'Norway': 74.96, \
+    'Thailand': 80.57, 'Denmark': 76.17, 'Bahamas, The': 0.0, \
+    'Greece': 54.64, 'Moldova': 0.0, 'Georgia': 0.0, \
     'China': 61.56,'Czech Republic': 75.48, 'Philippines': 68.46}
     data.Country = data.Country.apply(lambda x: socialized[x] if x in socialized.values() else 0.0)
     return data
