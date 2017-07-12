@@ -10,7 +10,7 @@ def _gender_category(data):
 
 
 def _drop_(data):
-    data.drop(labels=['coworkers', 'comments', 'Timestamp', 'state', 'self_employed', 'benefits', ], axis = 1, inplace = True)
+    data.drop(labels=['coworkers', 'comments', 'Timestamp', 'state', 'self_employed', 'benefits', 'anonymity'], axis = 1, inplace = True)
     return data
 
 
@@ -60,6 +60,10 @@ def _work_interference(data):
     return data
 
 
+def _care_options(data):
+    data.care_options = data.care_options.apply(lambda x: 1 if x == 'Yes' else 0)
+    return data
+
 
 def _employ(data):
     data.no_employees = data.no_employees.apply(lambda x: 25 if x == '6-25' else 5 if x == '1-5' else 100 if x == '26-100' else 500 if x == '100-500' else 1000 if x == '500-1000' else 2000)
@@ -69,6 +73,22 @@ def _employ(data):
 def _leave(data):
     data.family_history = data.family_history.apply(lambda x: 1 if x == 'Very easy' else 2 if x == 'Somewhat easy' else 4 if x == 'Somewhat difficult' else 5 if x == 'Very difficult' else 3)
     return data
+
+
+def _phys_health_consequences(data):
+    data.phys_health_consequence = data.phys_health_consequence.apply(lambda x: 1 if x == 'Yes' else 0)
+    return data
+
+
+def _seek_help(data):
+    data.seek_help = data.seek_help.apply(lambda x: 1 if x.lower() == 'yes' else .5 if x.lower == "don't know" else 0)
+    return data
+
+
+def _wellness_program(data):
+    data.wellness_program = data.wellness_program.apply(lambda x: 1 if x.lower() == 'yes' else 0.5 if x == "Don't know" else 0)
+    return data
+
 
 def clean_data(data):
     data = _gender_category(data)
@@ -81,15 +101,19 @@ def clean_data(data):
     data = _work_interference(data)
     data = _employ(data)
     data = _leave(data)
+    data = _care_options(data)
+    data = _supervisor(data)
+    data = _phys_health_consequences(data)
+    data = _seek_help(data)
+    data = _wellness_program(data)
     return data
 
 
-def supervisor(data):
+def _supervisor(data):
     data.supervisor = data.supervisor.apply(lambda x: 1 if x == 'Yes' else 0 if x == 'No' else 2)
     return data
 
 
 if __name__ == '__main__':
-    data = pd.read_csv('survey.csv')
-    data = clean_data(data)
+    data = clean_data(pd.read_csv('survey.csv'))
     print(data.head(10))
