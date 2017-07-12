@@ -21,7 +21,7 @@ def build_model(data):
     forest.fit(x_tr, y_tr)
     predicted = forest.predict(x_te)
     _score_model(predicted, y_te)
-    print(forest.feature_importances_)
+    print(sorted(list(zip(data.columns.tolist(), forest.feature_importances_))), ascending = False)
 
 
 if __name__ == '__main__':
