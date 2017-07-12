@@ -15,7 +15,7 @@ def _score_model(pred, true):
 def build_model(data):
     y = data.treatment
     data.drop(['treatment'], axis = 1, inplace = True)
-    X = data
+    X = data[['wellness_program','Gender','phys_health_interview','mental_health_consequence', 'supervisor', 'care_options', 'no_employees','Country', 'family_history', 'Age', 'work_interfere']]
     x_tr, x_te, y_tr, y_te = _train_test(X, y)
     forest = rfc(n_estimators=10000,n_jobs=-1, verbose=1, class_weight="balanced")
     forest.fit(x_tr, y_tr)
