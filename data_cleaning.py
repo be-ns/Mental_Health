@@ -10,7 +10,7 @@ def _gender_category(data):
 
 
 def _drop_(data):
-    data.drop(labels=['coworkers', 'comments', 'Timestamp', 'state', 'self_employed', 'benefits', 'anonymity'], axis = 1, inplace = True)
+    data.drop(labels=['coworkers', 'comments', 'Timestamp', 'state', 'self_employed', 'benefits', 'anonymity', 'mental_vs_physical'], axis = 1, inplace = True)
     return data
 
 
@@ -90,6 +90,31 @@ def _wellness_program(data):
     return data
 
 
+def _leave(data):
+    data.leave = data.leave.apply(lambda x: 1 if x == 'Very difficult' else 2 if x == 'Somewhat difficult' else 3 if x == "Don't know" else 4 if x == 'Somewhat easy' else 5)
+    return data
+
+
+def _mental_health_interview(data):
+    data.mental_health_interview = data.mental_health_interview.apply(lambda x: 1 if x.lower() == 'yes' else 0)
+    return data
+
+
+def _mental_health_consequence(data):
+    data.mental_health_consequence = data.mental_health_consequence.apply(lambda x: 1 if x.lower() == 'yes' else .5 if x.lower() == 'maybe' else 0)
+    return data
+
+
+def _phys_health_interview(data):
+    data.phys_health_interview = data.phys_health_interview.apply(lambda x: 1 if x.lower() == 'yes' else 0.5 if x.lower() == 'maybe' else 0)
+    return data
+
+
+def _obs_consequence(data):
+    data.obs_consequence = data.obs_consequence.apply(lambda x: 1 if x.lower() == 'yes' else 0)
+    return data
+
+
 def clean_data(data):
     data = _gender_category(data)
     data = _tech(data)
@@ -106,6 +131,11 @@ def clean_data(data):
     data = _phys_health_consequences(data)
     data = _seek_help(data)
     data = _wellness_program(data)
+    data = _leave(data)
+    data = _mental_health_consequence(data)
+    data = _mental_health_interview(data)
+    data = _phys_health_interview(data)
+    data = _obs_consequence(data)
     return data
 
 
