@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.linear_model import Lasso as lass_o
 
 
-def _train_test(X, y):
+def _train_test(data):
     y = data.treatment
     data.drop(['treatment'], axis = 1, inplace = True)
     X = data
