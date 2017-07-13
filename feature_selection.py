@@ -4,7 +4,7 @@ from sklearn.metrics import f1_score as f1
 from data_cleaning import clean_data as cd
 import pandas as pd
 from sklearn.decomposition import PCA as pca
-from sklearn.preprocessing import StandardScaler as scaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier as kn_n
 
 from sklearn.ensemble import GradientBoostingClassifier as gbc
@@ -15,7 +15,7 @@ def _train_test(data, preprocess):
     data.drop(['treatment'], axis = 1, inplace = True)
     X = data
     if preprocess == 1:
-        X = scaler.fit_transform(X)
+        X = StandardScaler().fit_transform(X)
     x_tr, x_te, y_tr, y_te = tts(X, y)
     return x_tr, x_te, y_tr, y_te
 
