@@ -2,7 +2,7 @@
 ## What can 1300 responses to a Workplace survey tell us about Mental Health?
 
 ### TABLE OF CONTENTS
-1. [Overview](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#overview)
+1. [Overview](https://github.com/be-ns/Mental_Health#overview)
  * [Goal](https://github.com/be-ns/Mental_Health#goal)
  * [Process](https://github.com/be-ns/Mental_Health#process)
  * [Results](https://github.com/be-ns/Mental_Health#results)
@@ -17,8 +17,13 @@
  * [Model Rationale](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#model---rationale)
 3. [Future Steps](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#next-steps)
 ---
+### Overview
+Mental Health affects nearly [1 in 5](https://www.nami.org/Learn-More/Mental-Health-By-the-Numbers) people in the US every year. This project aimed to look at how demographic information, workplace standards like wellness programs, and even the perceived stigma of mental illness would influence the likelihood of mental illness.
+
+My initial goal was to clean the data, then use a Random Forest to obtain the top features. After this I cross-trained two models - one using Principal Component Analysis to turn the entire feature space into 5 components, the other utilizing the top 8 features from the Random Forest.
+Both secondary models tested out K-Nearest Neighbors, a Support Vector Classifier, and an Ensemble Classifier using Gradient Boosting.
 #### Goal
-Do an analysis on survey data from 2016 to see if there are any consistent indicators of seeking treatment for mental health problems.
+Identify any consistent indicators for those who sought treatment for mental health problems.
 #### Process
 * Analyze data landscape in order to understand what features are important to predicting those who sought mental health treatment
   * This was done through a Random Forest Classifier
@@ -35,3 +40,12 @@ All analysis was done using local code development and cloud-based computing / a
 * [SciKitLearn](http://scikit-learn.org/stable/)
 * [MatPlotLib](https://matplotlib.org/)
 * [AWS (EC2)](https://www.aws.amazon.com])
+
+### Technical Approach
+#### Data
+#### Cleaning / Munging
+#### Model Selection / Benchmarking
+In my initial benchmarking, ensemble methods tended to outperform others out of the box.
+* Random Forest - F1 score of .836
+* K-Nearest Neighbors - F1 score of .725
+* Support Vector Classifier - F1 score of 
