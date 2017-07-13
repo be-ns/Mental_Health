@@ -13,9 +13,9 @@ from sklearn.ensemble import GradientBoostingClassifier as gbc
 def _train_test(data, preprocess):
     y = data.treatment
     data.drop(['treatment'], axis = 1, inplace = True)
+    X = data
     if preprocess == 1:
         X = scaler.fit_transform(X)
-    X = data
     x_tr, x_te, y_tr, y_te = tts(X, y)
     return x_tr, x_te, y_tr, y_te
 
