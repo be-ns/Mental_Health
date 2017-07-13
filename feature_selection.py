@@ -40,7 +40,7 @@ def build_model(data):
     _score_model(predicted, y_te)
     print('starting SVM')
     x_tr, x_te, y_tr, y_te = _train_test(cd(pd.read_csv('survey.csv')), preprocess=0)
-    svm = sv_c(C=1.5)
+    svm = sv_c(C=.75)
     svm.fit(x_tr, y_tr)
     predicted = svm.predict(x_te)
     _score_model(predicted, y_te)
