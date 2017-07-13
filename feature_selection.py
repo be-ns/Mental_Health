@@ -26,7 +26,12 @@ def build_model(data):
     zipped = zip(data.columns.tolist(), forest.feature_importances_)
     for x in list(sorted(zipped, key=lambda x: x[1])):
         print(x)
-
+    print('starting Lasso Regression')
+    lasso = lass_o()
+    lasso.fit(x_tr, y_tr)
+    predicted = lasso.predict(x_te)
+    _score_model(predicted, y_te)
+    print(lasso.coef_)
 
 
 if __name__ == '__main__':
