@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.decomposition import PCA as pca
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier as kn_n
-
+from sklearn.svm import SVC as sv_c
 from sklearn.ensemble import GradientBoostingClassifier as gbc
 
 
@@ -38,7 +38,12 @@ def build_model(data):
     knn.fit(x_tr, y_tr)
     predicted = knn.predict(x_te)
     _score_model(predicted, y_te)
-    print('complete')
+    print('starting SVM')
+    x_tr, x_te, y_tr, y_te = _train_test(cd(pd.read_csv('survey.csv')), preprocess = 0)
+    svm = sv_c()
+    svm.fit(x_tr, y_tr)
+    predicted = svm.predict(x_te)
+    _score_model(predicted, y_te)
 
 
 if __name__ == '__main__':

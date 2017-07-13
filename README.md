@@ -2,12 +2,12 @@
 ## What can 1300 responses to a Workplace survey tell us about Mental Health?
 
 ### TABLE OF CONTENTS
-1. [Overview](https://github.com/be-ns/Mental_Health#overview)
+1. __[Overview](https://github.com/be-ns/Mental_Health#overview)__
  * [Goal](https://github.com/be-ns/Mental_Health#goal)
  * [Process](https://github.com/be-ns/Mental_Health#process)
  * [Results](https://github.com/be-ns/Mental_Health#results)
  * [Tools Used](https://github.com/be-ns/Mental_Health#tools-used)
-2. [Technical Approach](https://github.com/be-ns/Mental_Health#technical_approach)
+2. __[Technical Approach](https://github.com/be-ns/Mental_Health#technical_approach)__
  * [Data](https://github.com/be-ns/Mental_Health#data)
  * [Cleaning / Munging](https://github.com/be-ns/Mental_Health#cleaning)
  * [Model Selection / Benchmarking](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#model-selection--benchmarking)
@@ -15,7 +15,7 @@
  * [Error Metric](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#error-metric-choice)
  * [Features](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#model---features)
  * [Model Rationale](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#model---rationale)
-3. [Future Steps](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#next-steps)
+3. __[Future Steps](https://github.com/be-ns/simpsons_analysis/blob/master/README.md#next-steps)__
 ---
 ### Overview
 Mental Health affects nearly [1 in 5](https://www.nami.org/Learn-More/Mental-Health-By-the-Numbers) people in the US every year. This project aimed to look at how demographic information, workplace standards like wellness programs, and even the perceived stigma of mental illness would influence the likelihood of mental illness.
@@ -41,11 +41,11 @@ All analysis was done using local code development and cloud-based computing / a
 * [MatPlotLib](https://matplotlib.org/)
 * [AWS (EC2)](https://www.aws.amazon.com])
 
-### Technical Approach
-#### Data
-#### Cleaning / Munging
-#### Model Selection / Benchmarking
+### __Technical Approach__
+#### __Data__
+#### __Cleaning / Munging__
+#### __Model Selection / Benchmarking__
 In my initial benchmarking, ensemble methods tended to outperform others out of the box.
 * Random Forest - F1 score of .836
 * K-Nearest Neighbors - F1 score of .725
-* Support Vector Classifier - F1 score of 
+* Support Vector Classifier - F1 score of
