@@ -3,12 +3,18 @@ from sklearn.model_selection import train_test_split as tts
 from sklearn.metrics import f1_score as f1
 from data_cleaning import clean_data as cd
 import pandas as pd
-from sklearn.linear_model import Lasso as lass_o
+from sklearn.decomposition import PCA as pca
+from sklearn.preprocessing import StandardScaler as scaler
+from sklearn.neighbors import KNeighborsClassifier as kn_n
+
+from sklearn.ensemble import GradientBoostingClassifier as gbc
 
 
-def _train_test(data):
+def _train_test(data, preprocess):
     y = data.treatment
     data.drop(['treatment'], axis = 1, inplace = True)
+    if preprocess = 1:
+        X = scaler.fit_transform(X)
     X = data
     x_tr, x_te, y_tr, y_te = tts(X, y)
     return x_tr, x_te, y_tr, y_te
@@ -17,7 +23,7 @@ def _score_model(pred, true):
     print(f1(true, pred))
 
 def build_model(data):
-    x_tr, x_te, y_tr, y_te = _train_test(data)
+    x_tr, x_te, y_tr, y_te = _train_test(data, preprocess = 0)
     print('starting Random Forest')
     forest = rfc(n_estimators=10000,n_jobs=-1, verbose=1, class_weight="balanced")
     forest.fit(x_tr, y_tr)
@@ -26,12 +32,12 @@ def build_model(data):
     zipped = zip(data.columns.tolist(), forest.feature_importances_)
     for x in list(sorted(zipped, key=lambda x: x[1])):
         print(x)
-    print('starting Lasso Regression')
-    lasso = lass_o()
-    lasso.fit(x_tr, y_tr)
-    predicted = lasso.predict(x_te)
+    print('starting KNN')
+    x_tr, x_te, y_tr, y_te = _train_test(data, preprocess = 1)
+    knn = kn_n(n_neighbors = 3)
+    knn.fit(x_tr, y_tr)
+    predicted = knn.predict(x_te)
     _score_model(predicted, y_te)
-    print(lasso.coef_)
 
 
 if __name__ == '__main__':
