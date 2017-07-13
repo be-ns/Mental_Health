@@ -33,11 +33,12 @@ def build_model(data):
     for x in list(sorted(zipped, key=lambda x: x[1])):
         print(x)
     print('starting KNN')
-    x_tr, x_te, y_tr, y_te = _train_test(data, preprocess = 1)
+    x_tr, x_te, y_tr, y_te = _train_test(cd(pd.read_csv('survey.csv')), preprocess = 1)
     knn = kn_n(n_neighbors = 3)
     knn.fit(x_tr, y_tr)
     predicted = knn.predict(x_te)
     _score_model(predicted, y_te)
+    print('complete')
 
 
 if __name__ == '__main__':
