@@ -23,7 +23,7 @@ def _score_model(pred, true):
     print(f1(true, pred))
 
 def build_model(data):
-    x_tr, x_te, y_tr, y_te = _train_test(data, preprocess = 0)
+    x_tr, x_te, y_tr, y_te = _train_test(data, preprocess == 0)
     print('starting Random Forest')
     forest = rfc(n_estimators=10000,n_jobs=-1, verbose=1, class_weight="balanced")
     forest.fit(x_tr, y_tr)
